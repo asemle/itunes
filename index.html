@@ -16,7 +16,15 @@
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name" >
-              <button class="btn btn-primary" ng-click="getSongData(artist)"> Submit </button>
+              <!-- <button class="btn btn-primary" ng-click="getSongData(artist)"> Submit </button> -->
+
+
+              <select name="sort" ng-model="sortOption">
+                <option value="Song">Song</option>
+                <option value="CollectionPrice">Price</option>
+              </select>
+              {{sortOption}}
+
             </div>
           </form>
         </div>

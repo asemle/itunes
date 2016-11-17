@@ -7,13 +7,14 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
       height: '110px',
       sortInfo: {fields: ['Song', 'Artist', 'Collection', 'Type'], directions: ['asc']},
       columnDefs: [
+        {field: 'Track', displayName: 'Track'},
         {field: 'Play', displayName: 'Play', width: '40px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a href="{{row.getProperty(col.field)}}"><img src="http://www.icty.org/x/image/Miscellaneous/play_icon30x30.png"></a></div>'},
         {field: 'Artist', displayName: 'Artist'},
         {field: 'Collection', displayName: 'Collection'},
         {field: 'AlbumArt', displayName: 'Album Art', width: '110px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><img src="{{row.getProperty(col.field)}}"></div>'},
         {field: 'Type', displayName: 'Type'},
         {field: 'CollectionPrice', displayName: 'Collection Price'},
-      ]
+      ],
   };
 
   //Our controller is what's going to connect our 'heavy lifting' itunesService with our view (index.html) so our user can see the results they get back from itunes.
@@ -35,6 +36,7 @@ var rawData;
         console.log(rawData)
         $scope.songData = rawData.map(function(obj) {
           var rObj = {};
+          rObj['Track'] = obj.trackName;
           rObj['AlbumArt'] = obj.artworkUrl100;
           rObj['Artist'] = obj.artistName;
           rObj['Collection'] = obj.collectionName;
